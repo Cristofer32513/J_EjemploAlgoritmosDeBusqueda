@@ -34,18 +34,20 @@ public class AlgoritmosDeBusqueda {
 		
 		System.out.println("Ingrese el numero a buscar");
 		int numBuscado=entrada.nextInt();
+		System.out.println();
+		System.out.println();
 		
 		for(int i=0;i<datos.length;i++){
 			if(datos[i]==numBuscado){
 				existe=true;
-				System.out.println("El numero si existe, se encuantra en a posicion "+(i+1));
+				System.out.println("   El numero si existe, se encuantra en la posicion "+(i+1));
 				break;
 			}
 			else
 				existe=false;
 		}
 		if(!existe)
-			System.out.println("El numero no existe.");
+			System.out.println("   *El numero no existe.");
 	}
 	
 	

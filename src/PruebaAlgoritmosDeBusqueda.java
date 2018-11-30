@@ -14,8 +14,8 @@ public class PruebaAlgoritmosDeBusqueda {
 		
 		do{
 			System.out.println("1 = Algoritmo de busqueda Secuencial.");
-			System.out.println("2 = .");
-			System.out.println("3 = .");
+			System.out.println("2 = (Sin funcion... Por Ahora)");
+			System.out.println("3 = (Sin funcion... Por Ahora)");
 			System.out.println("4 = Llenar vector a utilizar.");
 			System.out.println("5 = Salir");
 			System.out.println("-----------------------------------------");
@@ -29,10 +29,10 @@ public class PruebaAlgoritmosDeBusqueda {
 				case 1:
 					if(datos.length>0){
 						System.out.println("  ======================================================VECTOR ORIGINAL======================================================\n");
-						//metodos.mostrarVector(datos);
+						algoritmos.mostrarVector(datos);
 						System.out.println("\n\n");
-						System.out.println("  =================================================ORDENAMIENTO POR SELECCION================================================\n");
-						//metodos.ordenamientoPorSeleccion(datos.clone());
+						System.out.println("  =================================================BUSQUEDA SECUENCIAL================================================\n");
+						algoritmos.busquedaSecuencial(datos.clone());
 					}
 					else
 						System.out.println("  *No se ha elegido un tamaño para el vector.");
@@ -41,11 +41,7 @@ public class PruebaAlgoritmosDeBusqueda {
 					break;
 				case 2:
 					if(datos.length>0){
-						System.out.println("  ======================================================VECTOR ORIGINAL======================================================\n");
-						//metodos.mostrarVector(datos);
-						System.out.println("\n\n");
-						System.out.println("  =================================================ORDENAMIENTO POR SELECCION================================================\n");
-						//metodos.ordenamientoPorSeleccion(datos.clone());
+						
 					}
 					else
 						System.out.println("  *No se ha elegido un tamaño para el vector.");
@@ -54,11 +50,7 @@ public class PruebaAlgoritmosDeBusqueda {
 					break;
 				case 3:
 					if(datos.length>0){
-						System.out.println("  ======================================================VECTOR ORIGINAL======================================================\n");
-						//metodos.mostrarVector(datos);
-						System.out.println("\n\n");
-						System.out.println("  =================================================ORDENAMIENTO POR INSERCION================================================\n");
-						//metodos.ordenamientoPorInsercion(datos.clone());
+						
 					}
 					else
 						System.out.println("  *No se ha elegido un tamaño para el vector.");
