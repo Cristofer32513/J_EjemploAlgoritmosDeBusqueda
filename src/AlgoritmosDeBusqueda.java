@@ -60,7 +60,25 @@ public class AlgoritmosDeBusqueda {
 		mostrarDatosDeEficiencia(contadorComparaciones, contadorRecorridos, tiempoTotal);
 	}
 	
-	
+	public int busquedaBinaria(int[] datos, int elemento){
+		int centro, primero, valorCentro, ultimo;
+		primero=0;
+		ultimo=datos.length-1;
+		while(primero<=ultimo){
+			centro=(primero+ultimo/2);
+			valorCentro=datos[centro];
+			System.out.println("Comparando "+elemento+" con "+ datos[centro]);
+			
+			if(elemento==valorCentro)
+				return centro;
+			else if(elemento<valorCentro)
+				ultimo=centro-1;
+			else{
+				primero=centro+1;
+			}
+		}
+		return -1;
+	}
 	
 	
 	
