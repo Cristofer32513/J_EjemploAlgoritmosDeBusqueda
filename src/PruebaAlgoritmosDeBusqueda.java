@@ -1,3 +1,4 @@
+import java.util.Arrays;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -14,8 +15,8 @@ public class PruebaAlgoritmosDeBusqueda {
 		
 		do{
 			System.out.println("1 = Algoritmo de busqueda Secuencial.");
-			System.out.println("2 = (Sin funcion... Por Ahora)");
-			System.out.println("3 = (Sin funcion... Por Ahora)");
+			System.out.println("2 = Algoritmo de busqueda Binaria.");
+			System.out.println("3 = Algoritmo de busqueda por Funciones Hash.");
 			System.out.println("4 = Llenar vector a utilizar.");
 			System.out.println("5 = Salir");
 			System.out.println("-----------------------------------------");
@@ -41,7 +42,18 @@ public class PruebaAlgoritmosDeBusqueda {
 					break;
 				case 2:
 					if(datos.length>0){
-						
+						int[] copiaDatos=datos.clone();
+						Arrays.sort(copiaDatos);
+						System.out.println("  ======================================================VECTOR ORIGINAL======================================================\n");
+						algoritmos.mostrarVector(copiaDatos);
+						System.out.println("\n\n");
+						System.out.println("  =================================================BUSQUEDA BINARIA================================================\n");
+						System.out.println("Ingrese el elemento a buscar...");
+						int respuesta=algoritmos.busquedaBinaria(copiaDatos, entrada.nextInt());
+						if(respuesta!=-1)
+							System.out.println("  El elemento buscado se encuntra en la posicion "+respuesta+".");
+						else
+							System.out.println("  *El elemento buscado no se encuentra en el vector.");
 					}
 					else
 						System.out.println("  *No se ha elegido un tamaño para el vector.");
@@ -50,7 +62,14 @@ public class PruebaAlgoritmosDeBusqueda {
 					break;
 				case 3:
 					if(datos.length>0){
-						
+						HashCero hash=new HashCero(8);
+						String[] elementos={"20","33","21","10","12","14","56","100"};
+						hash.funcionHash(elementos, hash.arreglo);
+						hash.mostrar();
+						String buscado=hash.buscarClave("33");
+						if(buscado==null){
+							System.out.println("el elemento 33 no se encuentra en la tabla");
+						}
 					}
 					else
 						System.out.println("  *No se ha elegido un tamaño para el vector.");

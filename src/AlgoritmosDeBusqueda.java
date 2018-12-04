@@ -1,3 +1,4 @@
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class AlgoritmosDeBusqueda {
@@ -27,6 +28,7 @@ public class AlgoritmosDeBusqueda {
 		System.out.println("    - Tiempo     total     de    ejecucion:	"+(double)tiempoTotal/1000000+" milisegundos");
 	}
 	
+	//ALGORITMO DE BUSQUEDA SECUENCIAL
 	public void busquedaSecuencial(int[] datos){
 		long contadorComparaciones=0, contadorRecorridos=0;
 		long tiempoTotal=0, tiempoInicial=0;
@@ -60,14 +62,15 @@ public class AlgoritmosDeBusqueda {
 		mostrarDatosDeEficiencia(contadorComparaciones, contadorRecorridos, tiempoTotal);
 	}
 	
+	//ALGORITMO DE BUSQUEDA BINARIA
 	public int busquedaBinaria(int[] datos, int elemento){
 		int centro, primero, valorCentro, ultimo;
 		primero=0;
 		ultimo=datos.length-1;
 		while(primero<=ultimo){
-			centro=(primero+ultimo/2);
+			centro=(primero+ultimo)/2;
 			valorCentro=datos[centro];
-			System.out.println("Comparando "+elemento+" con "+ datos[centro]);
+			//System.out.println("Comparando "+elemento+" con "+ datos[centro]);
 			
 			if(elemento==valorCentro)
 				return centro;
@@ -80,6 +83,57 @@ public class AlgoritmosDeBusqueda {
 		return -1;
 	}
 	
+	//ALGORITMO DE BUSQUEDA SPOR FUCNIONES HASH	
 	
+}
+
+class HashCero{
+	String[] arreglo;
+	int tamaño, cont;
 	
+	public HashCero(int tam){
+		tamaño=tam;
+		arreglo=new String[tam];
+		Arrays.fill(arreglo, "-1");
+	}
+	
+	public void funcionHash(String[] cadenaArreglo, String[] arreglo){
+		int i;
+		for(i=0;i<cadenaArreglo.length;i++){
+			String elemento=cadenaArreglo[i];
+			int indiceArreglo=Integer.parseInt(elemento)%7;
+			//System.out.println("El indice es "+indiceArreglo+" para el elemento "+elemento);
+			
+			while(arreglo[indiceArreglo]!="-1"){
+				indiceArreglo++;
+				//System.out.println("Ocurrio una colisison para el indice "+(indiceArreglo-1)+
+						//" cambiar al indice "+indiceArreglo);
+				indiceArreglo%=tamaño;
+			}
+			arreglo[indiceArreglo]=elemento;
+		}
+	}
+	
+	public void mostrar(){
+	
+	}
+	
+	public String buscarClave(String elemento){
+		int indiceArreglo=Integer.parseInt(elemento)%7;
+		int contador=0;
+		
+		while(arreglo[indiceArreglo]!="-1"){
+			if(arreglo[indiceArreglo]==elemento){
+				System.out.println("El elemento "+elemento+" fue encontrado en la posicion "+indiceArreglo);
+				return arreglo[indiceArreglo];
+			}
+			indiceArreglo++;
+			indiceArreglo%=tamaño;
+			contador++;
+			if(contador>7){
+				break;
+			}
+		}
+		return null;
+	}	
 }
