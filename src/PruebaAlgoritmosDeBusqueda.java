@@ -65,7 +65,6 @@ public class PruebaAlgoritmosDeBusqueda {
 						HashCero hash=new HashCero(8);
 						String[] elementos={"20","33","21","10","12","14","56","100"};
 						hash.funcionHash(elementos, hash.arreglo);
-						hash.mostrar();
 						String buscado=hash.buscarClave("33");
 						if(buscado==null){
 							System.out.println("el elemento 33 no se encuentra en la tabla");

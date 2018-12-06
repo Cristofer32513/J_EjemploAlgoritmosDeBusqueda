@@ -64,29 +64,46 @@ public class AlgoritmosDeBusqueda {
 	
 	//ALGORITMO DE BUSQUEDA BINARIA
 	public int busquedaBinaria(int[] datos, int elemento){
+		long contadorComparaciones=0, contadorRecorridos=0;
+		long tiempoTotal=0, tiempoInicial=0;
+		
 		int centro, primero, valorCentro, ultimo;
 		primero=0;
 		ultimo=datos.length-1;
+		tiempoInicial=System.nanoTime();
+		contadorRecorridos++;
 		while(primero<=ultimo){
 			centro=(primero+ultimo)/2;
 			valorCentro=datos[centro];
 			//System.out.println("Comparando "+elemento+" con "+ datos[centro]);
-			
-			if(elemento==valorCentro)
+			contadorComparaciones++;
+			if(elemento==valorCentro){
+				tiempoTotal=System.nanoTime()-tiempoInicial;
+				System.out.println();
+				System.out.println();
+				mostrarDatosDeEficiencia(contadorComparaciones, contadorRecorridos, tiempoTotal);
+				System.out.println();
+				System.out.println();
 				return centro;
+			}
 			else if(elemento<valorCentro)
 				ultimo=centro-1;
 			else{
 				primero=centro+1;
 			}
 		}
+		tiempoTotal=System.nanoTime()-tiempoInicial;
+		System.out.println();
+		System.out.println();
+		mostrarDatosDeEficiencia(contadorComparaciones, contadorRecorridos, tiempoTotal);
+		System.out.println();
+		System.out.println();
 		return -1;
 	}
-	
-	//ALGORITMO DE BUSQUEDA SPOR FUCNIONES HASH	
-	
 }
 
+
+//ALGORITMO DE BUSQUEDA POR FUCNIONES HASH
 class HashCero{
 	String[] arreglo;
 	int tamaño, cont;
@@ -112,10 +129,6 @@ class HashCero{
 			}
 			arreglo[indiceArreglo]=elemento;
 		}
-	}
-	
-	public void mostrar(){
-	
 	}
 	
 	public String buscarClave(String elemento){
