@@ -118,7 +118,7 @@ class HashCero{
 		int i;
 		for(i=0;i<cadenaArreglo.length;i++){
 			String elemento=cadenaArreglo[i];
-			int indiceArreglo=Integer.parseInt(elemento)%7;
+			int indiceArreglo=Integer.parseInt(elemento)%97;
 			//System.out.println("El indice es "+indiceArreglo+" para el elemento "+elemento);
 			
 			while(arreglo[indiceArreglo]!="-1"){
@@ -130,13 +130,36 @@ class HashCero{
 			arreglo[indiceArreglo]=elemento;
 		}
 	}
+
+	public void mostar(){
+		int incremento = 0,i,j;
+		for(i=0; i < 1; i++){
+			incremento +=100;
+			System.out.println();
+			for(j=incremento-100;j<incremento;j++){
+				System.out.format("| %3s"+"",j);
+			}
+			System.out.println("|");
+			System.out.println();
+			for(j= incremento -100; j< incremento;j++){
+				if (arreglo[j].equals("-1")){
+					System.out.print(" |        ");
+				}
+				else{
+					System.out.print(String.format("| %3s"+"", arreglo[j]));
+				}
+			}
+			System.out.println("|");
+			System.out.println();
+		}
+	}
 	
 	public String buscarClave(String elemento){
 		int indiceArreglo=Integer.parseInt(elemento)%7;
 		int contador=0;
 		
 		while(arreglo[indiceArreglo]!="-1"){
-			if(arreglo[indiceArreglo]==elemento){
+			if(arreglo[indiceArreglo].equals(elemento)){
 				System.out.println("El elemento "+elemento+" fue encontrado en la posicion "+indiceArreglo);
 				return arreglo[indiceArreglo];
 			}

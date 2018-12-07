@@ -62,12 +62,22 @@ public class PruebaAlgoritmosDeBusqueda {
 					break;
 				case 3:
 					if(datos.length>0){
-						HashCero hash=new HashCero(8);
-						String[] elementos={"20","33","21","10","12","14","56","100"};
+						HashCero hash=new HashCero(datos.length);
+						String[] elementos=new String[datos.length];
+						
+						for(int i=0;i<elementos.length;i++)
+							elementos[i]=String.valueOf(datos[i]);
+						
+						for(int i=0;i<elementos.length;i++)
+							System.out.println(elementos[i]);
+						
 						hash.funcionHash(elementos, hash.arreglo);
-						String buscado=hash.buscarClave("33");
+						hash.mostar();
+						entrada.nextLine();
+						System.out.println("Ingrese el dato a buscar...");
+						String buscado=hash.buscarClave(entrada.nextLine());
 						if(buscado==null){
-							System.out.println("el elemento 33 no se encuentra en la tabla");
+							System.out.println("el elemento no se encuentra en la tabla");
 						}
 					}
 					else
