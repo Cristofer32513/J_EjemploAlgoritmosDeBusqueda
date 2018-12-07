@@ -23,7 +23,6 @@ public class AlgoritmosDeBusqueda {
 		System.out.println();
 		System.out.println("    - Cantidad  de  recorridos  realizados:	"+contadorRecorridos);
 		System.out.println("    - Cantidad de comparaciones realizadas:	"+contadorComparaciones);
-		//System.out.println("    - Cantidad  de intercambios realizados:	"+contadorIntercambios);
 		System.out.println("    - Tiempo     total     de    ejecucion:	"+(double)tiempoTotal/1000000000+" segundos");
 		System.out.println("    - Tiempo     total     de    ejecucion:	"+(double)tiempoTotal/1000000+" milisegundos");
 	}
@@ -88,9 +87,8 @@ public class AlgoritmosDeBusqueda {
 			}
 			else if(elemento<valorCentro)
 				ultimo=centro-1;
-			else{
+			else
 				primero=centro+1;
-			}
 		}
 		tiempoTotal=System.nanoTime()-tiempoInicial;
 		System.out.println();
@@ -114,6 +112,22 @@ class HashCero{
 		Arrays.fill(arreglo, "-1");
 	}
 	
+	/**
+    *
+    * @param cadenaArreglo
+    * @param arreglo
+    */
+	
+	public void mostrarDatosDeEficiencia(long contadorComparaciones,
+			long contadorRecorridos, long tiempoTotal){
+		System.out.println("       DATOS DE EFICIENCIA DEL ALGORITMO");
+		System.out.println();
+		System.out.println("    - Cantidad  de  recorridos  realizados:	"+contadorRecorridos);
+		System.out.println("    - Cantidad de comparaciones realizadas:	"+contadorComparaciones);
+		System.out.println("    - Tiempo     total     de    ejecucion:	"+(double)tiempoTotal/1000000000+" segundos");
+		System.out.println("    - Tiempo     total     de    ejecucion:	"+(double)tiempoTotal/1000000+" milisegundos");
+	}
+	
 	public void funcionHash(String[] cadenaArreglo, String[] arreglo){
 		int i;
 		for(i=0;i<cadenaArreglo.length;i++){
@@ -135,12 +149,13 @@ class HashCero{
 		int incremento = 0,i,j;
 		for(i=0; i < 1; i++){
 			incremento +=100;
-			System.out.println();
+			System.out.print("POSICION:	");
 			for(j=incremento-100;j<incremento;j++){
 				System.out.format("| %3s"+"",j);
 			}
 			System.out.println("|");
 			System.out.println();
+			System.out.print("ELEMENTO:	");
 			for(j= incremento -100; j< incremento;j++){
 				if (arreglo[j].equals("-1")){
 					System.out.print(" |        ");
@@ -151,25 +166,43 @@ class HashCero{
 			}
 			System.out.println("|");
 			System.out.println();
+			System.out.println();
 		}
 	}
 	
 	public String buscarClave(String elemento){
-		int indiceArreglo=Integer.parseInt(elemento)%7;
+		long contadorComparaciones=0, contadorRecorridos=0;
+		long tiempoTotal=0, tiempoInicial=0;
+		
+		int indiceArreglo=Integer.parseInt(elemento)%97;
 		int contador=0;
 		
+		tiempoInicial=System.nanoTime();
+		contadorRecorridos++;
 		while(arreglo[indiceArreglo]!="-1"){
+			contadorComparaciones++;
 			if(arreglo[indiceArreglo].equals(elemento)){
-				System.out.println("El elemento "+elemento+" fue encontrado en la posicion "+indiceArreglo);
+				tiempoTotal=System.nanoTime()-tiempoInicial;
+				System.out.println();
+				System.out.println();
+				mostrarDatosDeEficiencia(contadorComparaciones, contadorRecorridos, tiempoTotal);
+				System.out.println();
+				System.out.println();
+				System.out.println("  El elemento "+elemento+" fue encontrado en la posicion "+indiceArreglo);
 				return arreglo[indiceArreglo];
 			}
 			indiceArreglo++;
 			indiceArreglo%=tamaño;
 			contador++;
-			if(contador>7){
+			if(contador>97)
 				break;
-			}
 		}
+		tiempoTotal=System.nanoTime()-tiempoInicial;
+		System.out.println();
+		System.out.println();
+		mostrarDatosDeEficiencia(contadorComparaciones, contadorRecorridos, tiempoTotal);
+		System.out.println();
+		System.out.println();
 		return null;
 	}	
 }

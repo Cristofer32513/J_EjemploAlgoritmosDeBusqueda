@@ -29,10 +29,9 @@ public class PruebaAlgoritmosDeBusqueda {
 				switch(opcion){
 				case 1:
 					if(datos.length>0){
-						System.out.println("  ======================================================VECTOR ORIGINAL======================================================\n");
+						System.out.println("  ======================================================DATOS======================================================\n");
 						algoritmos.mostrarVector(datos);
 						System.out.println("\n\n");
-						System.out.println("  =================================================BUSQUEDA SECUENCIAL================================================\n");
 						algoritmos.busquedaSecuencial(datos.clone());
 					}
 					else
@@ -44,14 +43,13 @@ public class PruebaAlgoritmosDeBusqueda {
 					if(datos.length>0){
 						int[] copiaDatos=datos.clone();
 						Arrays.sort(copiaDatos);
-						System.out.println("  ======================================================VECTOR ORIGINAL======================================================\n");
+						System.out.println("  ======================================================DATOS======================================================\n");
 						algoritmos.mostrarVector(copiaDatos);
 						System.out.println("\n\n");
-						System.out.println("  =================================================BUSQUEDA BINARIA================================================\n");
 						System.out.println("Ingrese el elemento a buscar...");
 						int respuesta=algoritmos.busquedaBinaria(copiaDatos, entrada.nextInt());
 						if(respuesta!=-1)
-							System.out.println("  El elemento buscado se encuntra en la posicion "+respuesta+".");
+							System.out.println("  El elemento buscado se encuntra en la posicion "+(respuesta+1)+".");
 						else
 							System.out.println("  *El elemento buscado no se encuentra en el vector.");
 					}
@@ -68,17 +66,15 @@ public class PruebaAlgoritmosDeBusqueda {
 						for(int i=0;i<elementos.length;i++)
 							elementos[i]=String.valueOf(datos[i]);
 						
-						for(int i=0;i<elementos.length;i++)
-							System.out.println(elementos[i]);
-						
 						hash.funcionHash(elementos, hash.arreglo);
+						System.out.println("  ======================================================DATOS======================================================\n");
 						hash.mostar();
 						entrada.nextLine();
 						System.out.println("Ingrese el dato a buscar...");
 						String buscado=hash.buscarClave(entrada.nextLine());
-						if(buscado==null){
-							System.out.println("el elemento no se encuentra en la tabla");
-						}
+						
+						if(buscado==null)
+							System.out.println("  *El elemento no se encuentra en la tabla");
 					}
 					else
 						System.out.println("  *No se ha elegido un tamaño para el vector.");
